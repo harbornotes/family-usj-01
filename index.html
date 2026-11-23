@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <title>USJ 家族お出かけプラン</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light only;
+      --sky: #E8F4FF;
+      --paper: #FFFFFF;
+      --ink: #1F2A44;
+      --ink-strong: #0F1B3D;
+      --ink-sub: #50607F;
+      --line: #D9E6F7;
+      --navy: #12307A;
+      --blue: #2563EB;
+      --blue-soft: #EAF2FF;
+      --red: #E8344E;
+      --red-soft: #FFEDEF;
+      --red-line: #FFC9D0;
+      --yellow: #FFC21A;
+      --yellow-deep: #B45F06;
+      --yellow-soft: #FFF6D6;
+      --yellow-line: #FFE08A;
+      --green: #12A06B;
+      --green-deep: #0B7A50;
+      --green-soft: #E3F7EE;
+      --green-line: #A9E5CB;
+      --violet: #7A45E5;
+      --violet-deep: #5B2DBE;
+      --violet-soft: #F1EAFF;
+      --violet-line: #D6C4FA;
+      --gray: #5B6780;
+      --gray-soft: #F3F5F9;
+      --gray-line: #D3D9E4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--sky); color: var(--ink); -webkit-text-size-adjust: 100%; }
+    body {
+      background:
+        radial-gradient(circle at 12% 0%, #FFFFFF 0, rgba(255,255,255,0) 38%),
+        linear-gradient(180deg, #DDEFFF 0, #EEF7FF 340px, #F7FBFF 100%);
+      background-color: var(--sky);
+      color: var(--ink);
+      font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page { width: 100%; max-width: 440px; margin: 0 auto; padding: 12px 14px 40px; }
+
+    /* ---------- ヒーロー ---------- */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #0F2C75 0%, #2563EB 62%, #3F8CFF 100%);
+      color: #fff; border-radius: 26px;
+      padding: 20px 18px 18px;
+      box-shadow: 0 10px 26px rgba(18, 48, 122, 0.28);
+      margin-bottom: 26px;
+    }
+    .hero-art { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero > *:not(.hero-art) { position: relative; z-index: 1; }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--yellow); color: var(--navy);
+      font-size: 13px; font-weight: 900; line-height: 1.3;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+      box-shadow: 0 3px 0 rgba(15, 27, 61, 0.25);
+    }
+    .hero-title { font-size: 29px; font-weight: 900; line-height: 1.25; letter-spacing: 0.02em; margin-bottom: 14px; text-shadow: 0 2px 0 rgba(15,27,61,0.28); }
+    .hero-title .accent { color: var(--yellow); }
+    .ticket {
+      display: flex; align-items: stretch; background: #fff; color: var(--ink-strong);
+      border-radius: 16px; overflow: hidden; margin-bottom: 12px;
+      box-shadow: 0 5px 0 rgba(15, 27, 61, 0.22);
+    }
+    .ticket-date {
+      flex-shrink: 0; width: 82px; background: var(--red); color: #fff;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 10px 6px; text-align: center; line-height: 1.2;
+    }
+    .ticket-date .m { font-size: 13px; font-weight: 700; }
+    .ticket-date .d { font-size: 34px; font-weight: 900; line-height: 1.05; }
+    .ticket-date .w { font-size: 13px; font-weight: 700; }
+    .ticket-body {
+      flex: 1; min-width: 0; padding: 11px 14px;
+      border-left: 3px dotted #BFD3F5;
+      display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    }
+    .ticket-label { font-size: 12px; font-weight: 700; color: var(--ink-sub); letter-spacing: 0.06em; }
+    .ticket-time { font-size: 20px; font-weight: 900; color: var(--navy); line-height: 1.3; }
+    .ticket-time small { font-size: 14px; font-weight: 700; color: var(--ink-sub); }
+    .purpose {
+      background: rgba(255,255,255,0.97); color: var(--ink);
+      border-radius: 16px; padding: 12px 14px; font-size: 15px; line-height: 1.65;
+    }
+    .purpose b { color: var(--red); font-weight: 900; }
+    .asof { margin-top: 10px; font-size: 12px; color: rgba(255,255,255,0.88); text-align: right; font-weight: 500; }
+
+    /* ---------- セクション共通 ---------- */
+    .section { margin-bottom: 30px; }
+    .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .sec-badge {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 19px; font-weight: 900; color: #fff;
+      box-shadow: 0 4px 0 rgba(15,27,61,0.2);
+    }
+    .sec-badge.c1 { background: var(--red); }
+    .sec-badge.c2 { background: var(--violet); }
+    .sec-badge.c3 { background: var(--blue); }
+    .sec-badge.c4 { background: var(--green); }
+    .sec-title { font-size: 19px; font-weight: 900; line-height: 1.35; color: var(--ink-strong); overflow-wrap: anywhere; }
+    .sec-title small { display: block; font-size: 12px; font-weight: 700; color: var(--ink-sub); letter-spacing: 0.08em; }
+    .sec-lead { font-size: 14px; line-height: 1.65; color: var(--ink-sub); margin-bottom: 12px; }
+    .tap-hint {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--paper); border: 2px dashed var(--line); border-radius: 14px;
+      padding: 8px 12px; margin-bottom: 14px; font-size: 14px; color: var(--ink-sub); font-weight: 500;
+    }
+    .tap-hint svg { flex-shrink: 0; color: var(--blue); }
+    .ext { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ---------- アトラクション ---------- */
+    .group { margin-bottom: 16px; }
+    .rank {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 900; line-height: 1.2;
+      padding: 5px 14px; border-radius: 999px; margin-bottom: 10px;
+    }
+    .rank.high { background: var(--red); color: #fff; box-shadow: 0 3px 0 #B31E36; }
+    .rank.mid { background: var(--yellow); color: #5C3300; box-shadow: 0 3px 0 #D79D00; }
+    .stack { display: flex; flex-direction: column; gap: 10px; }
+    .card {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--paper); border: 2px solid var(--line); border-radius: 18px;
+      padding: 12px 12px 12px 14px; text-decoration: none; color: var(--ink);
+      box-shadow: 0 4px 0 var(--line); position: relative;
+    }
+    .card.high { border-color: var(--red-line); box-shadow: 0 4px 0 var(--red-line); }
+    .card.mid { border-color: var(--yellow-line); box-shadow: 0 4px 0 var(--yellow-line); }
+    .card:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--line); }
+    .card:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+    .card-body { flex: 1; min-width: 0; }
+    .card-name { font-size: 16.5px; font-weight: 900; line-height: 1.4; color: var(--ink-strong); overflow-wrap: anywhere; }
+    .card-point { font-size: 14px; line-height: 1.5; color: var(--ink-sub); margin-top: 2px; overflow-wrap: anywhere; }
+    .chip { flex-shrink: 0; width: 36px; height: 36px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .card.high .chip { background: var(--red-soft); color: var(--red); }
+    .card.mid .chip { background: var(--yellow-soft); color: var(--yellow-deep); }
+    .note {
+      display: flex; align-items: flex-start; gap: 9px;
+      background: var(--yellow-soft); border: 2px solid var(--yellow-line); border-radius: 16px;
+      padding: 11px 13px; font-size: 14.5px; line-height: 1.65; color: var(--ink);
+    }
+    .note svg { flex-shrink: 0; margin-top: 3px; color: var(--yellow-deep); }
+
+    /* ---------- 入場方法 ---------- */
+    .methods { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+    .method { background: var(--paper); border: 2px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 0 var(--line); }
+    .method.free { border-color: var(--green-line); box-shadow: 0 4px 0 var(--green-line); }
+    .method.paid { border-color: var(--violet-line); box-shadow: 0 4px 0 var(--violet-line); }
+    .method.open { border-color: var(--gray-line); box-shadow: 0 4px 0 var(--gray-line); }
+    .m-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 14px; }
+    .free .m-top { background: var(--green-soft); }
+    .paid .m-top { background: var(--violet-soft); }
+    .open .m-top { background: var(--gray-soft); }
+    .m-head { display: flex; align-items: center; gap: 9px; min-width: 0; }
+    .m-num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900;
+    }
+    .free .m-num { background: var(--green); }
+    .paid .m-num { background: var(--violet); }
+    .open .m-num { background: var(--gray); }
+    .m-title { font-size: 16px; font-weight: 900; line-height: 1.35; color: var(--ink-strong); overflow-wrap: anywhere; }
+    .price { flex-shrink: 0; font-size: 13px; font-weight: 900; line-height: 1.2; padding: 4px 11px; border-radius: 999px; color: #fff; }
+    .price.free { background: var(--green); }
+    .price.paid { background: var(--violet); }
+    .price.open { background: var(--gray); }
+    .m-body { padding: 12px 14px 14px; }
+    .m-desc { font-size: 15px; line-height: 1.65; }
+    .cta {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      margin-top: 12px; padding: 11px 13px; border-radius: 14px; text-decoration: none;
+      font-size: 14px; font-weight: 700; line-height: 1.4; border: 2px solid;
+    }
+    .cta:active { transform: translateY(2px); }
+    .cta.free { background: var(--green-soft); color: var(--green-deep); border-color: var(--green-line); }
+    .cta.paid { background: var(--violet-soft); color: var(--violet-deep); border-color: var(--violet-line); }
+    .cta svg { flex-shrink: 0; }
+    .vs { display: flex; align-items: center; gap: 10px; margin: -2px 0; }
+    .vs i { flex: 1; height: 0; border-top: 2px dotted var(--gray-line); }
+    .vs span { background: var(--paper); border: 2px solid var(--line); color: var(--ink-sub); font-size: 12px; font-weight: 700; line-height: 1.2; padding: 4px 11px; border-radius: 999px; }
+
+    .reco { background: var(--blue-soft); border: 2px solid #BCD4FA; border-radius: 20px; padding: 14px; margin-bottom: 16px; }
+    .reco-head { display: flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 900; color: var(--navy); margin-bottom: 12px; }
+    .reco-head svg { color: var(--blue); flex-shrink: 0; }
+    .step { background: #fff; border: 2px solid #D5E4FC; border-radius: 15px; padding: 11px 13px; }
+    .step-label { display: inline-block; background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; line-height: 1.25; padding: 3px 10px; border-radius: 8px; margin-bottom: 6px; }
+    .step-text { font-size: 15px; line-height: 1.65; }
+    .step-arrow { display: flex; justify-content: center; padding: 5px 0; color: var(--blue); }
+
+    .info { background: var(--paper); border: 2px solid var(--violet-line); border-radius: 20px; padding: 14px 15px; box-shadow: 0 4px 0 var(--violet-line); }
+    .info-title { display: flex; align-items: center; gap: 8px; font-size: 16.5px; font-weight: 900; color: var(--violet-deep); margin-bottom: 11px; }
+    .info-title svg { flex-shrink: 0; }
+    .bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .bullets li { position: relative; padding-left: 20px; font-size: 14.5px; line-height: 1.65; }
+    .bullets li::before { content: ""; position: absolute; left: 1px; top: 9px; width: 9px; height: 9px; border-radius: 50%; background: var(--yellow); border: 2px solid var(--violet); }
+
+    /* ---------- スケジュール ---------- */
+    .route { background: var(--paper); border: 2px solid var(--line); border-radius: 20px; padding: 16px 14px; box-shadow: 0 4px 0 var(--line); margin-bottom: 12px; }
+    .timeline { list-style: none; position: relative; padding-left: 26px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 12px; bottom: 12px; border-left: 4px dotted #9DB9EE; }
+    .t-item { position: relative; padding-bottom: 12px; }
+    .t-item:last-child { padding-bottom: 0; }
+    .t-dot { position: absolute; left: -26px; top: 9px; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 4px solid var(--blue); }
+    .t-item.feature .t-dot { border-color: var(--red); background: var(--yellow); }
+    .t-box { background: var(--blue-soft); border-radius: 14px; padding: 9px 12px 10px; }
+    .t-item.feature .t-box { background: var(--red-soft); border: 2px solid var(--red-line); padding: 7px 10px 8px; }
+    .t-time { display: inline-block; font-size: 13px; font-weight: 900; line-height: 1.25; color: var(--navy); background: #fff; padding: 2px 10px; border-radius: 999px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+    .t-item.feature .t-time { background: var(--red); color: #fff; }
+    .t-text { font-size: 16px; font-weight: 900; line-height: 1.45; color: var(--ink-strong); }
+    .sched-note { background: var(--paper); border: 2px solid var(--line); border-left: 6px solid var(--blue); border-radius: 14px; padding: 10px 13px; font-size: 14.5px; line-height: 1.65; }
+
+    /* ---------- 基本方針 ---------- */
+    .policy { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .p-item { display: flex; align-items: center; gap: 12px; background: var(--paper); border: 2px solid var(--green-line); border-radius: 18px; padding: 12px 14px; box-shadow: 0 4px 0 var(--green-line); }
+    .p-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 14px; background: var(--green-soft); color: var(--green-deep); display: flex; align-items: center; justify-content: center; }
+    .p-text { font-size: 15px; line-height: 1.6; font-weight: 500; }
+
+    .footer { margin-top: 6px; background: #fff; border: 2px dashed var(--gray-line); border-radius: 16px; padding: 12px 14px; font-size: 14px; line-height: 1.65; color: var(--ink-sub); display: flex; gap: 9px; align-items: flex-start; }
+    .footer svg { flex-shrink: 0; margin-top: 3px; color: var(--yellow-deep); }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ext" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></symbol>
+  </svg>
+
+  <main class="page">
+    <header class="hero">
+      <svg class="hero-art" viewBox="0 0 400 300" preserveAspectRatio="xMaxYMin slice" fill="none" aria-hidden="true">
+        <circle cx="338" cy="62" r="56" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="4"/>
+        <ellipse cx="338" cy="62" rx="56" ry="22" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="3.5" transform="rotate(-20 338 62)"/>
+        <ellipse cx="338" cy="62" rx="24" ry="56" stroke="#FFFFFF" stroke-opacity="0.15" stroke-width="3"/>
+        <path d="M40 90l5 11 12 5-12 5-5 11-5-11-12-5 12-5z" fill="#FFC21A" fill-opacity="0.9"/>
+        <path d="M262 28l3.5 8 8.5 3.5-8.5 3.5-3.5 8-3.5-8-8.5-3.5 8.5-3.5z" fill="#FFFFFF" fill-opacity="0.8"/>
+        <path d="M376 150l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#FFC21A" fill-opacity="0.85"/>
+        <circle cx="206" cy="22" r="4" fill="#FF7A8C" fill-opacity="0.9"/>
+        <circle cx="30" cy="38" r="3.5" fill="#FFFFFF" fill-opacity="0.7"/>
+        <circle cx="300" cy="150" r="4" fill="#7FE0B5" fill-opacity="0.9"/>
+        <rect x="150" y="14" width="10" height="5" rx="2" fill="#FFC21A" transform="rotate(25 150 14)"/>
+        <rect x="364" y="14" width="10" height="5" rx="2" fill="#FF7A8C" transform="rotate(-20 364 14)"/>
+      </svg>
+
+      <span class="hero-kicker">🎢 ファミリーで出かける1日</span>
+      <h1 class="hero-title"><span class="accent">USJ</span><br>家族お出かけプラン</h1>
+
+      <div class="ticket">
+        <div class="ticket-date" aria-label="日帰りのお出かけ例">
+        <span class="m">PLAN</span>
+        <span class="d">例</span>
+        <span class="w">日帰り</span>
+      </div>
+        <div class="ticket-body">
+          <span class="ticket-label">時間帯の目安</span>
+          <span class="ticket-time">9:00〜17:00 <small>（予定）</small></span>
+        </div>
+      </div>
+
+      <p class="purpose"><b>目的：</b>長女と次女が楽しめることを最優先。当日の天候・体調・混雑に応じて柔軟に行動する。</p>
+      <p class="asof">家族でのお出かけの一例です。営業時間・ショー時刻・料金は来園日の公式案内で確認してください。</p>
+    </header>
+
+    <section class="section" aria-labelledby="s1">
+      <div class="sec-head">
+        <span class="sec-badge c1" aria-hidden="true">★</span>
+        <h2 id="s1" class="sec-title"><small>MUST GO</small>優先したいアトラクション・ショー</h2>
+      </div>
+
+      <p class="tap-hint">
+        <svg class="ext" aria-hidden="true"><use href="#ext"/></svg>
+        <span>各項目をタップすると公式サイトが開きます。</span>
+      </p>
+
+      <div class="group">
+        <span class="rank high">優先度 ★★★</span>
+        <div class="stack">
+          <a class="card high" href="https://www.usj.co.jp/web/ja/jp/attractions/the-flying-snoopy" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">フライング・スヌーピー</div>
+              <div class="card-point">次女も楽しめる乗り物</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+          <a class="card high" href="https://www.usj.co.jp/web/ja/jp/attractions/kuromi-live" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">クロミ・ライブ</div>
+              <div class="card-point">マイメロとクロミのショー</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+          <a class="card high" href="https://www.usj.co.jp/web/ja/jp/25th-anniversary-discover-u/parade" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">25周年パレード</div>
+              <div class="card-point">14:00開始予定</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+          <a class="card high" href="https://www.usj.co.jp/web/ja/jp/areas/super-nintendo-world" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">マリオエリア</div>
+              <div class="card-point">家族全員が興味あり</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="group">
+        <span class="rank mid">優先度 ★★☆</span>
+        <div class="stack">
+          <a class="card mid" href="https://www.usj.co.jp/web/ja/jp/attractions/yoshis-adventure" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">ヨッシー・アドベンチャー</div>
+              <div class="card-point">穏やかな乗り物。92cm以上</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+          <a class="card mid" href="https://www.usj.co.jp/web/ja/jp/attractions/hello-kittys-ribbon-collection" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">キティのリボン・コレクション</div>
+              <div class="card-point">キティちゃんと写真撮影</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+          <a class="card mid" href="https://www.usj.co.jp/web/ja/jp/attractions/snoopy-studios" target="_blank" rel="noopener noreferrer">
+            <div class="card-body">
+              <div class="card-name">スヌーピー・スタジオ</div>
+              <div class="card-point">屋内で遊べる</div>
+            </div>
+            <span class="chip" aria-hidden="true"><svg class="ext"><use href="#ext"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <p>余裕があれば、長女はスヌーピーのコースター、次女はおさるのジョージなどを楽しむ。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="s2">
+      <div class="sec-head">
+        <span class="sec-badge c2" aria-hidden="true">🎫</span>
+        <h2 id="s2" class="sec-title"><small>HOW TO ENTER</small>マリオエリアへの入場方法（重要）</h2>
+      </div>
+
+      <p class="sec-lead">家族全員が興味を持っているため、できれば入場を確保したいエリア。</p>
+
+      <div class="methods">
+        <article class="method free">
+          <div class="m-top">
+            <div class="m-head"><span class="m-num">①</span><h3 class="m-title">無料の入場整理券</h3></div>
+            <span class="price free">無料</span>
+          </div>
+          <div class="m-body">
+            <p class="m-desc">入園後、公式アプリで取得。先着順でなくなる可能性あり</p>
+            <a class="cta free" href="https://www.usj.co.jp/web/ja/jp/enjoy/numbered-ticket/timed-entry-ticket" target="_blank" rel="noopener noreferrer">
+              <span>無料の入場整理券・取得方法（公式）</span>
+              <svg class="ext" aria-hidden="true"><use href="#ext"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <div class="vs" aria-hidden="true"><i></i><span>無料整理券 ／ 有料確約券</span><i></i></div>
+
+        <article class="method paid">
+          <div class="m-top">
+            <div class="m-head"><span class="m-num">②</span><h3 class="m-title">入場確約券付きエクスプレス・パス</h3></div>
+            <span class="price paid">有料</span>
+          </div>
+          <div class="m-body">
+            <p class="m-desc">指定時間のエリア入場を確約。対象アトラクションの待ち時間も短縮</p>
+            <a class="cta paid" href="https://www.usj.co.jp/web/ja/jp/tickets/lineup/expresspass" target="_blank" rel="noopener noreferrer">
+              <span>有料エクスプレス・パスの種類・購入案内（公式）</span>
+              <svg class="ext" aria-hidden="true"><use href="#ext"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="method open">
+          <div class="m-top">
+            <div class="m-head"><span class="m-num">③</span><h3 class="m-title">整理券なしの入場</h3></div>
+            <span class="price open">無料</span>
+          </div>
+          <div class="m-body">
+            <p class="m-desc">入場制限がない場合のみ可能</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="reco">
+        <div class="reco-head">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>おすすめの対応</span>
+        </div>
+        <div class="step">
+          <span class="step-label">ステップ1｜事前確認</span>
+          <p class="step-text">まず有料パスの価格と在庫を確認。費用対効果が合わなければ、当日朝に無料整理券を取得する。</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <div class="step">
+          <span class="step-label">ステップ2｜当日朝</span>
+          <p class="step-text">団体券を受け取ったら、家族全員分のQRコードをアプリに登録し、全員入園後すぐに整理券を取る。</p>
+        </div>
+      </div>
+
+      <div class="info">
+        <h3 class="info-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          <span>有料チケットについて</span>
+        </h3>
+        <ul class="bullets">
+          <li>団体入場券とは別に、エクスプレス・パスだけを追加購入できる。</li>
+          <li>エリア入場確約券だけの通常の単独販売は確認できない。</li>
+          <li>エクスプレス・パス4は14,800円〜の種類があるが、商品や日付によって価格・対象施設が異なる。</li>
+          <li>行く日の在庫・価格を、購入前に必要な人数分確認する。</li>
+          <li>エリアへの入場確約と、乗り物の待ち時間短縮は別の特典。次女が利用できない乗り物が多いパスは避けたい。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="s3">
+      <div class="sec-head">
+        <span class="sec-badge c3" aria-hidden="true">🕘</span>
+        <h2 id="s3" class="sec-title"><small>SCHEDULE</small>当日の大まかなスケジュール</h2>
+      </div>
+
+      <div class="route">
+        <ol class="timeline">
+          <li class="t-item">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-box"><span class="t-time">9:00〜11:00</span><p class="t-text">スヌーピー、キティ</p></div>
+          </li>
+          <li class="t-item">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-box"><span class="t-time">11:00〜12:00</span><p class="t-text">クロミ・ライブ</p></div>
+          </li>
+          <li class="t-item">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-box"><span class="t-time">12:00〜13:00</span><p class="t-text">昼食・休憩</p></div>
+          </li>
+          <li class="t-item feature">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-box"><span class="t-time">13:00〜15:00</span><p class="t-text">14時のパレードを中心に楽しむ</p></div>
+          </li>
+          <li class="t-item">
+            <span class="t-dot" aria-hidden="true"></span>
+            <div class="t-box"><span class="t-time">15:00〜17:00</span><p class="t-text">マリオエリア、その他の乗り物</p></div>
+          </li>
+        </ol>
+      </div>
+
+      <p class="sched-note">※ マリオの入場指定時間が午前中なら、順番を変更する。帰宅時間も柔軟に判断。</p>
+    </section>
+
+    <section class="section" aria-labelledby="s4">
+      <div class="sec-head">
+        <span class="sec-badge c4" aria-hidden="true">🌈</span>
+        <h2 id="s4" class="sec-title"><small>OUR RULES</small>当日の基本方針</h2>
+      </div>
+
+      <ul class="policy">
+        <li class="p-item">
+          <span class="p-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          <p class="p-text">アトラクションを多く回ることより、姉妹それぞれの満足度を優先。</p>
+        </li>
+        <li class="p-item">
+          <span class="p-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <p class="p-text">無料の「よやくのり」を活用して待ち時間を減らす。</p>
+        </li>
+        <li class="p-item">
+          <span class="p-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <p class="p-text">必要なら二手に分かれて、それぞれ好きな乗り物を楽しむ。</p>
+        </li>
+        <li class="p-item">
+          <span class="p-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+          <p class="p-text">寒さや疲れが出たら屋内施設で休憩し、帰宅時間を調整する。</p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p>当日の販売在庫・ショー時刻・混雑状況は要確認。</p>
+    </footer>
+  </main>
+</body>
+</html>
